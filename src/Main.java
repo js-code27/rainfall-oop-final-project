@@ -13,6 +13,7 @@ public class Main
         // Stores the users selected year
         int selectedYear;
 
+        // Double array of preset rainfall data
         double[][] rainfallData = {{4.96, 3.27, 1.50, 1.38, 2.28, 2.11, 1.61, 5.93, 4.30, 1.77, 8.72, 3.47}, {1.60, 3.88, 2.22, 10.02, 7.16, 2.74, 5.10, 5.14, 4.91, 6.39, 17.65, 4.30}, {1.81, 1.70, 6.04, 6.25, 4.53, 3.93, 6.66, 7.68, 15.79, 6.61, 10.16, 3.33}};
 
         // Creats rainfall object with preset data
@@ -20,40 +21,66 @@ public class Main
 
         System.out.println("Rainfall Measurement Program");
 
+        // Switch case with loop to select menu options
         do
         {
+            printMenu();
+
+            System.out.print("Select an option: ");
+            option = input.nextInt();
+
             switch (option)
             {
                 case 1:
-                    rainfall.getThreeYearRainfallAmount();
+                    System.out.println("Total rainfall for the years: " + rainfall.getThreeYearRainfallAmount() + " inches");
                     break;
 
                 case 2:
-
+                    System.out.println("Average monthly rainfall for the three years: " + rainfall.getThreeYearAverageMonthlyRainfall() + " inches");
                     break;
 
                 case 3:
+                    System.out.println("Year 1 total rainfall: " + rainfall.getTotalRainfallForEachYear(1) + " inches");
 
+                    System.out.println("Year 2 total rainfall: " + rainfall.getTotalRainfallForEachYear(2) + " inches");
+
+                    System.out.println("Year 3 total rainfall: " + rainfall.getTotalRainfallForEachYear(3) + " inches");
                     break;
 
                 case 4:
+                    int mostRainYear = rainfall.getYearWithMostRain();
 
+                    System.out.println("Year with the most rain: Year " + mostRainYear);
+                    System.out.println("Rainfall amount: " + rainfall.getTotalRainfallForEachYear(mostRainYear) + " inches");
                     break;
 
                 case 5:
+                    int leastRainYear = rainfall.getYearWithLeastRain();
 
+                    System.out.println("Year with the least rain: Year " + leastRainYear);
+                    System.out.println("Rainfall amount: " + rainfall.getTotalRainfallForEachYear(leastRainYear) + " inches");
                     break;
 
                 case 6:
+                    selectedYear = askForYear(input);
+
+                    System.out.println("Month with the most rain in Year " + selectedYear + ": " + rainfall.getMonthWithMostRain(selectedYear));
+
+                    System.out.println("Rainfall amount: " + rainfall.getMostRainInYear(selectedYear) + " inches");
 
                     break;
 
                 case 7:
+                    selectedYear = askForYear(input);
+
+                    System.out.println("Month with the least rain in Year " + selectedYear + ": " + rainfall.getMonthWithLeastRain(selectedYear));
+
+                    System.out.println("Rainfall amount: " + rainfall.getLeastRainInYear(selectedYear) + " inches");
 
                     break;
 
                 case 8:
-
+                    rainfall.displayRainfallTable();
                     break;
 
                 case 9:
@@ -68,6 +95,7 @@ public class Main
 
     }
 
+    // Prints menu to terminal
     public static void printMenu()
     {
         System.out.println("\nMenu:");

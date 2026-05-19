@@ -6,13 +6,7 @@ public class Rainfall
     // Stores the months
     private String[] months = {"January", "February", "March", "April",  "May", "June", "July", "August",  "September", "October", "November", "December"};
 
-    // Default Constructor
-    public Rainfall()
-    {
-        rainfall = new double[3][12];
-    }
-
-    // Constructor with data
+    // Constructor
     public Rainfall(double[][] rainfallData)
     {
         setRainfall(rainfallData);
@@ -24,7 +18,7 @@ public class Rainfall
 
         for (int year = 0; year < rainfallData.length; year++)
         {
-            for (int month = 0; month < rainfallData[i].length; month++)
+            for (int month = 0; month < rainfallData[year].length; month++)
                 {
                 rainfall[year][month] = rainfallData[year][month];
                 }
@@ -59,7 +53,7 @@ public class Rainfall
     public double getThreeYearAverageMonthlyRainfall()
     {
         int totalMonths = rainfall.length * rainfall[0].length;
-        return totalMonths / 3.0;
+        return getThreeYearRainfallAmount() / totalMonths;
     }
 
     public double getTotalRainfallForEachYear(int year)
@@ -75,13 +69,13 @@ public class Rainfall
         return total;
     }
 
-    public double getYearWithMostRain()
+    public int getYearWithMostRain()
     {
-        int yearWithMostRain = 0;
+        int yearWithMostRain = 1;
         double highestRainfall = getTotalRainfallForEachYear(1);
-        double currentTotal = 0;
+        double currentTotal;
 
-        for (int year = 2; year < rainfall.length; year++)
+        for (int year = 2; year <= rainfall.length; year++)
         {
             currentTotal = getTotalRainfallForEachYear(year);
 
@@ -95,13 +89,13 @@ public class Rainfall
         return yearWithMostRain;
     }
 
-    public double getYearWithLeastRain()
+    public int getYearWithLeastRain()
     {
-        int yearWithLeastRain = 0;
+        int yearWithLeastRain = 1;
         double lowestRainfall = getTotalRainfallForEachYear(1);
-        double currentTotal = 0;
+        double currentTotal;
 
-        for (int year = 2; year < rainfall.length; year++)
+        for (int year = 2; year <= rainfall.length; year++)
         {
             currentTotal = getTotalRainfallForEachYear(year);
 
@@ -115,21 +109,87 @@ public class Rainfall
         return yearWithLeastRain;
     }
 
-    public double getMonthWithMostRain(int year)
+    public String getMonthWithMostRain(int selectedYearNum)
     {
+        int yearIndex = selectedYearNum - 1;
+        int monthWithMostRain = 0;
+        double highestRainfall = rainfall[yearIndex][0];
 
+        for (int month = 1; month < rainfall[yearIndex].length; month++)
+        {
+            if (rainfall[yearIndex][month] > highestRainfall)
+            {
+                highestRainfall = rainfall[yearIndex][month];
+                monthWithMostRain = month;
+            }
+        }
+
+        return months[monthWithMostRain];
     }
 
-    public double getMonthWithLeastRain(int year)
+    public String getMonthWithLeastRain(int selectedYear)
     {
+        int yearIndex = selectedYear - 1;
+        int monthWithLeastRain = 0;
+        double lowestRainfall = rainfall[yearIndex][0];
 
+        for (int month = 0; month < rainfall[yearIndex].length; month++)
+        {
+            if (lowestRainfall > rainfall[yearIndex][month])
+            {
+                lowestRainfall = rainfall[yearIndex][month];
+                monthWithLeastRain = month;
+            }
+        }
+
+        return months[monthWithLeastRain];
     }
 
-    public d
+    public double getMostRainInYear(int selectedYear)
+    {
+        int yearIndex = selectedYear - 1;
+        double highestRainfall = rainfall[yearIndex][0];
 
+        for (int month = 1; month < rainfall[yearIndex].length; month++)
+        {
+            if (rainfall[yearIndex][month] > highestRainfall)
+            {
+                highestRainfall = rainfall[yearIndex][month];
+            }
+        }
 
+        return highestRainfall;
+    }
 
+    public double getLeastRainInYear(int selectedYear)
+    {
+        int yearIndex = selectedYear - 1;
+        double lowestRainfall = rainfall[yearIndex][0];
 
+        for (int month = 1; month < rainfall[yearIndex].length; month++)
+        {
+            if (rainfall[yearIndex][month] < lowestRainfall)
+            {
+                lowestRainfall = rainfall[yearIndex][month];
+            }
+        }
 
+        return lowestRainfall;
+    }
+
+    public void displayRainfallTable()
+    {
+        System.out.println("\nRainfall Data");
+
+        for (int year = 0; year < rainfall.length; year++)
+        {
+            System.out.println("\nYear " + (year + 1) + ":");
+
+            for (int month = 0; month < rainfall[year].length; month++)
+            {
+                System.out.println(months[month] + ": " + rainfall[year][month] + " inches");
+            }
+        }
+    }
 
 }
