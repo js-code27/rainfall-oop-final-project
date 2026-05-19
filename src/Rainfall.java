@@ -25,16 +25,19 @@ public class Rainfall
         }
     }
 
+    // gets specific rain value arrays for a selected year or month
     public double getRainfallAmount(int year, int month)
     {
         return rainfall[year][month];
     }
 
+    // gets the months name
     public String getMonthName(int month)
     {
         return months[month];
     }
 
+    // gets the total rain fall of the three years combined
     public double getThreeYearRainfallAmount()
     {
         double total = 0;
@@ -50,12 +53,14 @@ public class Rainfall
         return total;
     }
 
+    // gets the average monthly rainfall of the three years combined
     public double getThreeYearAverageMonthlyRainfall()
     {
         int totalMonths = rainfall.length * rainfall[0].length;
         return getThreeYearRainfallAmount() / totalMonths;
     }
 
+    // gets the total rainfall of a specific year
     public double getTotalRainfallForEachYear(int year)
     {
         int yearIndex = year - 1;
@@ -69,6 +74,7 @@ public class Rainfall
         return total;
     }
 
+    // gets the number of the year with the most rain
     public int getYearWithMostRain()
     {
         int yearWithMostRain = 1;
@@ -89,6 +95,7 @@ public class Rainfall
         return yearWithMostRain;
     }
 
+    // gets the number of the year with the least rain
     public int getYearWithLeastRain()
     {
         int yearWithLeastRain = 1;
@@ -109,6 +116,7 @@ public class Rainfall
         return yearWithLeastRain;
     }
 
+    // gets the name of the month with the most rain of a year specified by a user
     public String getMonthWithMostRain(int selectedYearNum)
     {
         int yearIndex = selectedYearNum - 1;
@@ -127,6 +135,7 @@ public class Rainfall
         return months[monthWithMostRain];
     }
 
+    // gets the name of the month with the least rain of a specified year by a user
     public String getMonthWithLeastRain(int selectedYear)
     {
         int yearIndex = selectedYear - 1;
@@ -145,6 +154,7 @@ public class Rainfall
         return months[monthWithLeastRain];
     }
 
+    // gets the value of the year that had the most rain
     public double getMostRainInYear(int selectedYear)
     {
         int yearIndex = selectedYear - 1;
@@ -161,6 +171,7 @@ public class Rainfall
         return highestRainfall;
     }
 
+    // gets the value of the year that had the least rain
     public double getLeastRainInYear(int selectedYear)
     {
         int yearIndex = selectedYear - 1;
@@ -177,6 +188,7 @@ public class Rainfall
         return lowestRainfall;
     }
 
+    // display the entire rain data
     public void displayRainfallTable()
     {
         System.out.println("\nRainfall Data");
