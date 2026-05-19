@@ -2,7 +2,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        // Creates the Scanner object to read input
+        // Scanner object to read input
         Scanner input = new Scanner(System.in);
 
         // Stores the users menu option
@@ -24,23 +24,44 @@ public class Main
         {
             switch (option)
             {
-                case A:
+                case 1:
 
                     break;
 
-                case B:
+                case 2:
 
                     break;
 
-                case C:
+                case 3:
 
                     break;
 
-                case D:
+                case 4:
 
                     break;
 
+                case 5:
 
+                    break;
+
+                case 6:
+
+                    break;
+
+                case 7:
+
+                    break;
+
+                case 8:
+
+                    break;
+
+                case 9:
+                    System.out.println("Good Bye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid Option, Select a number from 1 to 9");
             }
 
         } while (option != 9);
