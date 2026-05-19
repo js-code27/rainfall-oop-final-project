@@ -20,6 +20,8 @@ public class Rainfall
 
     public void setRainfall(double[][] rainfallData)
     {
+      rainfall = new double[3][12];
+
         for (int year = 0; year < rainfallData.length; year++)
         {
             for (int month = 0; month < rainfallData[i].length; month++)
@@ -31,7 +33,7 @@ public class Rainfall
 
     public double getRainfallAmount(int year, int month)
     {
-        return rainfall[year][month]
+        return rainfall[year][month];
     }
 
     public String getMonthName(int month)
@@ -75,12 +77,42 @@ public class Rainfall
 
     public double getYearWithMostRain()
     {
+        int yearWithMostRain = 0;
+        double highestRainfall = getTotalRainfallForEachYear(1);
+        double currentTotal = 0;
 
+        for (int year = 2; year < rainfall.length; year++)
+        {
+            currentTotal = getTotalRainfallForEachYear(year);
+
+            if (currentTotal > highestRainfall)
+            {
+                highestRainfall = currentTotal;
+                yearWithMostRain = year;
+            }
+        }
+
+        return yearWithMostRain;
     }
 
     public double getYearWithLeastRain()
     {
+        int yearWithLeastRain = 0;
+        double lowestRainfall = getTotalRainfallForEachYear(1);
+        double currentTotal = 0;
 
+        for (int year = 2; year < rainfall.length; year++)
+        {
+            currentTotal = getTotalRainfallForEachYear(year);
+
+            if (currentTotal < lowestRainfall)
+            {
+                lowestRainfall = currentTotal;
+                yearWithLeastRain = year;
+            }
+        }
+
+        return yearWithLeastRain;
     }
 
     public double getMonthWithMostRain(int year)

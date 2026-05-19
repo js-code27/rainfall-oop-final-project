@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main
 {
     public static void main(String[] args)
@@ -9,11 +11,9 @@ public class Main
         int option;
 
         // Stores the users selected year
-        int selectedYear
+        int selectedYear;
 
-        double[][] rainfallData = {{4.96, 3.27, 1.50, 1.38, 2.28, 2.11, 1.61, 5.93, 4.30, 1.77, 8.72, 3.47},
-                {1.60, 3.88, 2.22, 10.02, 7.16, 2.74, 5.10, 5.14, 4.91, 6.39, 17.65, 4.30},
-                {1.81, 1.70, 6.04, 6.25, 4.53, 3.93, 6.66, 7.68, 15.79, 6.61, 10.16, 3.33}}
+        double[][] rainfallData = {{4.96, 3.27, 1.50, 1.38, 2.28, 2.11, 1.61, 5.93, 4.30, 1.77, 8.72, 3.47}, {1.60, 3.88, 2.22, 10.02, 7.16, 2.74, 5.10, 5.14, 4.91, 6.39, 17.65, 4.30}, {1.81, 1.70, 6.04, 6.25, 4.53, 3.93, 6.66, 7.68, 15.79, 6.61, 10.16, 3.33}};
 
         // Creats rainfall object with preset data
         Rainfall rainfall = new Rainfall(rainfallData);
@@ -25,7 +25,7 @@ public class Main
             switch (option)
             {
                 case 1:
-
+                    rainfall.getThreeYearRainfallAmount();
                     break;
 
                 case 2:
